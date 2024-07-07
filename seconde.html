@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compteur de Secondes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('https://i.pinimg.com/originals/7b/1a/ba/7b1aba4d308bfcf60f5a92e3ff4e8c21.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+        }
+        .container {
+            text-align: center;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px 60px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+        }
+        #timer {
+            font-size: 60px;
+            color: #3498db;
+            margin-bottom: 20px;
+        }
+        .rank {
+            font-size: 28px;
+            color: #e74c3c;
+        }
+        .rank span {
+            font-weight: bold;
+            color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="timer">0</div>
+        <div class="rank" id="rank">Débutant</div>
+    </div>
+    <script>
+        let seconds = parseInt(localStorage.getItem('seconds')) || 0;
+        const ranks = [
+            { name: "Crotte naissante", time: 0 },
+            { name: "Débutant du caca", time: 10 },
+            { name: "Petit étron", time: 30 },
+            { name: "Crottelette", time: 60 },
+            { name: "Défécation mineure", time: 100 },
+            { name: "Excrément amateur", time: 150 },
+            { name: "Cacatrophy", time: 210 },
+            { name: "Déluge fécal", time: 280 },
+            { name: "Maître des déjections", time: 360 },
+            { name: "Empereur des excréments", time: 450 },
+            { name: "Poo-lar Bear", time: 550 },
+            { name: "Souffleur de caca", time: 660 },
+            { name: "Roi des étrons", time: 780 },
+            { name: "Cacagrande", time: 910 },
+            { name: "Fumier cosmique", time: 1050 },
+            { name: "Maître caca", time: 1200 },
+            { name: "Divinité fécale", time: 1360 },
+            { name: "Suprême excrémenteur", time: 1530 },
+            { name: "Défenseur du caca", time: 1710 },
+            { name: "Excrément céleste", time: 1900 },
+            { name: "Cacaventurier", time: 2100 },
+            { name: "Souverain des selles", time: 2310 },
+            { name: "Créateur de merde", time: 2530 },
+            { name: "Génie de la fiente", time: 2760 },
+            { name: "Cacahéros", time: 3000 },
+            { name: "Cacalchimiste", time: 3250 },
+            { name: "Champion des cacas", time: 3510 },
+            { name: "Héros du caca", time: 3780 },
+            { name: "Vétéran du vomi", time: 4060 },
+            { name: "Légende du caca", time: 4350 },
+            { name: "Défenseur du fumier", time: 4650 },
+            { name: "Vaillant du vomi", time: 4960 },
+            { name: "Guerrier du caca", time: 5280 },
+            { name: "Maître des excréments", time: 5610 },
+            { name: "Seigneur du caca", time: 5950 },
+            { name: "Conquérant du caca", time: 6300 },
+            { name: "Héraut du caca", time: 6660 },
+            { name: "Avatar du caca", time: 7030 },
+            { name: "Monarque du caca", time: 7410 },
+            { name: "Souverain du caca", time: 7800 },
+            { name: "Empereur du caca", time: 8200 },
+            { name: "Légende des fèces", time: 8610 },
+            { name: "Grand Maître des cacas", time: 9030 },
+            { name: "Seigneur des excréments", time: 9460 },
+            { name: "Suprême des cacas", time: 9900 },
+            { name: "Roi des royaumes de merde", time: 10350 },
+            { name: "Majesté des étrons", time: 10800 },
+            { name: "Divinité des cacas", time: 11260 },
+            { name: "Excrément universel", time: 11730 },
+            { name: "Cosmos du caca", time: 12210 },
+            { name: "Réalité du fumier", time: 12700 },
+            { name: "Éternité du caca", time: 13200 },
+            { name: "Infini du fumier", time: 18000 }
+        ];
+
+        function updateTimer() {
+            seconds++;
+            document.getElementById('timer').innerText = seconds;
+            localStorage.setItem('seconds', seconds);
+
+            let currentRank = "Débutant";
+            for (let rank of ranks) {
+                if (seconds >= rank.time) {
+                    currentRank = rank.name;
+                } else {
+                    break;
+                }
+            }
+            document.getElementById('rank').innerText = currentRank;
+        }
+
+        document.getElementById('timer').innerText = seconds;
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
